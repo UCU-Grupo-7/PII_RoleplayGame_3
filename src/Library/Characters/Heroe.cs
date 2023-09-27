@@ -4,4 +4,6 @@ namespace RoleplayGame
     {
         int PV { get; }
     }
+
+    //metodo para afanar pv?
 }
