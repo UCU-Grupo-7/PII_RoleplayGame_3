@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Dwarf: ICharacter
+    public class Knight : Heroe
     {
         private int health = 100;
 
         private List<IItem> items = new List<IItem>();
 
-        public Dwarf(string name)
+        public Knight(string name)
         {
             this.Name = name;
             
-            this.AddItem(new Axe());
-            this.AddItem(new Helmet());
+            this.AddItem(new Sword());
+            this.AddItem(new Armor());
+            this.AddItem(new Shield());
         }
 
         public string Name { get; set; }

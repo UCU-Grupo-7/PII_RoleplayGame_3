@@ -1,19 +1,18 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Wizard: IMagicCharacter
+    public class Dwarf : Heroe
     {
         private int health = 100;
 
         private List<IItem> items = new List<IItem>();
 
-        private List<IMagicalItem> magicalItems = new List<IMagicalItem>();
-
-        public Wizard(string name)
+        public Dwarf(string name)
         {
             this.Name = name;
             
-            this.AddItem(new Staff());
+            this.AddItem(new Axe());
+            this.AddItem(new Helmet());
         }
 
         public string Name { get; set; }
@@ -30,13 +29,6 @@ namespace RoleplayGame
                         value += (item as IAttackItem).AttackValue;
                     }
                 }
-                foreach (IMagicalItem item in this.magicalItems)
-                {
-                    if (item is IMagicalAttackItem)
-                    {
-                        value += (item as IMagicalAttackItem).AttackValue;
-                    }
-                }
                 return value;
             }
         }
@@ -51,13 +43,6 @@ namespace RoleplayGame
                     if (item is IDefenseItem)
                     {
                         value += (item as IDefenseItem).DefenseValue;
-                    }
-                }
-                foreach (IMagicalItem item in this.magicalItems)
-                {
-                    if (item is IMagicalDefenseItem)
-                    {
-                        value += (item as IMagicalDefenseItem).DefenseValue;
                     }
                 }
                 return value;
@@ -84,30 +69,19 @@ namespace RoleplayGame
             }
         }
 
-        public void Cure()
+        public override void Cure()
         {
             this.Health = 100;
         }
 
-        public void AddItem(IItem item)
+        public override void AddItem(IItem item)
         {
             this.items.Add(item);
         }
 
-        public void RemoveItem(IItem item)
+        public override void RemoveItem(IItem item)
         {
             this.items.Remove(item);
         }
-
-        public void AddItem(IMagicalItem item)
-        {
-            this.magicalItems.Add(item);
-        }
-
-        public void RemoveItem(IMagicalItem item)
-        {
-            this.magicalItems.Remove(item);
-        }
-
     }
 }
