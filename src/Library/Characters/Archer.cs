@@ -61,6 +61,15 @@ namespace RoleplayGame
             }
         }
 
+
+        /* public void Attack(ICharacter character)
+        {
+            if (character.DefenseValue < this.AttackValue)
+            {
+                character.Health -= this.AttackValue - character.DefenseValue;
+            }
+        } */
+
         public void ReceiveAttack(int power)
         {
             if (this.DefenseValue < power)
