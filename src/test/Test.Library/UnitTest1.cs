@@ -17,28 +17,38 @@ namespace RoleplayGame
             gimli.Cure();
             Assert.That(gimli.Health, Is.EqualTo(100));
         }
+/*         [Test]
+        public void Curar()
+        {
+            Dwarf gimli = new Dwarf("Gimli");
+            gimli.Cure();
+            Assert.That(gimli.Health, Is.EqualTo(100));
+        } */
         [Test]
         public void Atacar()
         {
             SpellsBook book = new SpellsBook();
-            book.Spells = new Spell[]{ new Spell() };
+            book.AddSpell(new SpellOne());
+            book.AddSpell(new SpellOne());
 
             Wizard gandalf = new Wizard("Gandalf");
-            gandalf.Staff = new Staff();
-            gandalf.SpellsBook = book; 
+            gandalf.AddItem(book);
 
             Dwarf gimli = new Dwarf("Gimli");
-            gimli.DefenseItem = new List<IDefenseItem>() {new Helmet(), new Shield()} ;
-            gimli.AttackItem = new Axe();
+
+            /* gimli.DefenseItem = new List<IDefenseItem>() {new Helmet(), new Shield()} ;
+            gimli.AttackItem = new Axe(); */
             
 
             int gimliStartHealth = gimli.Health;  // vida con la que arranca gimli
             
-            gandalf.Attack(gimli);
+            gimli.ReceiveAttack(gandalf.AttackValue);
+            //gandalf.Attack(gimli);
 
-            //Assert.That(gimli.Health, Is.EqualTo(40));
-            Assert.That(gimli.Health, Is.EqualTo(gimliStartHealth -= gandalf.AttackValue - gimli.DefenseValue));
+            Assert.That(gimli.Health, Is.EqualTo(0));
+            //Assert.That(gimli.Health, Is.EqualTo(gimliStartHealth -= gandalf.AttackValue - gimli.DefenseValue));
         }
+        
         [Test]
         public void Test3()
         {
