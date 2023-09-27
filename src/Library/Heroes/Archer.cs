@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer: ICharacter
+    public class Archer : Heroe
     {
         private int health = 100;
 
@@ -78,7 +78,7 @@ namespace RoleplayGame
             }
         }
 
-        public void Cure()
+        /* public void Cure()
         {
             this.Health = 100;
         }
@@ -91,6 +91,6 @@ namespace RoleplayGame
         public void RemoveItem(IItem item)
         {
             this.items.Remove(item);
-        }
+        } */
     }
 }
