@@ -3,21 +3,22 @@ namespace RoleplayGame
 {
     public class Dwarf : Heroe
     {
+        //private int baseHealth = 90;
         private int health = 100;
-
-        private List<IItem> items = new List<IItem>();
 
         public Dwarf(string name)
         {
             this.Name = name;
             
+            //this.Health = baseHealth;
+
             this.AddItem(new Axe());
             this.AddItem(new Helmet());
         }
 
-        public string Name { get; set; }
+        //public string Name { get; set; }
         
-        public int AttackValue
+        /* public int AttackValue
         {
             get
             {
@@ -31,9 +32,9 @@ namespace RoleplayGame
                 }
                 return value;
             }
-        }
+        } */
 
-        public int DefenseValue
+        /* public int DefenseValue
         {
             get
             {
@@ -47,9 +48,9 @@ namespace RoleplayGame
                 }
                 return value;
             }
-        }
+        } */
 
-        public int Health
+        /* public int Health
         {
             get
             {
@@ -59,7 +60,7 @@ namespace RoleplayGame
             {
                 this.health = value < 0 ? 0 : value;
             }
-        }
+        } */
 
         /* public void Attack(ICharacter character)
         {
@@ -67,28 +68,13 @@ namespace RoleplayGame
             {
                 character.Health -= this.AttackValue - character.DefenseValue;
             }
-        } */
-        public void ReceiveAttack(int power)
+        }  */
+        /* public void ReceiveAttack(int power)
         {
             if (this.DefenseValue < power)
             {
                 this.Health -= power - this.DefenseValue;
             }
-        }
-
-        public override void Cure()
-        {
-            this.Health = 100;
-        }
-
-        public override void AddItem(IItem item)
-        {
-            this.items.Add(item);
-        }
-
-        public override void RemoveItem(IItem item)
-        {
-            this.items.Remove(item);
-        }
+        } */
     }
 }

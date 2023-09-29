@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Wizard : IMagicCharacter, Heroe
+    public class Wizard : Heroe, IMagicCharacter
     {
         private int health = 100;
 

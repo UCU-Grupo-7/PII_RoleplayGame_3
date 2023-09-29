@@ -5,7 +5,7 @@ namespace RoleplayGame
     {
         private int health = 100;
 
-        private List<IItem> items = new List<IItem>();
+        //private List<IItem> items = new List<IItem>();
 
         public Knight(string name)
         {
@@ -16,9 +16,9 @@ namespace RoleplayGame
             this.AddItem(new Shield());
         }
 
-        public string Name { get; set; }
+        //public string Name { get; set; }
         
-        public int AttackValue
+       /*  public int AttackValue
         {
             get
             {
@@ -48,9 +48,9 @@ namespace RoleplayGame
                 }
                 return value;
             }
-        }
+        } */
 
-        public int Health
+ /*        public int Health
         {
             get
             {
@@ -68,9 +68,9 @@ namespace RoleplayGame
             {
                 this.Health -= power - this.DefenseValue;
             }
-        }
+        } */
 
-        public void Cure()
+        /* public void Cure()
         {
             this.Health = 100;
         }
@@ -83,6 +83,6 @@ namespace RoleplayGame
         public void RemoveItem(IItem item)
         {
             this.items.Remove(item);
-        }
+        } */
     }
 }

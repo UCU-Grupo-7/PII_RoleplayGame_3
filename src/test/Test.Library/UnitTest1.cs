@@ -42,8 +42,8 @@ namespace RoleplayGame
 
             int gimliStartHealth = gimli.Health;  // vida con la que arranca gimli
             
-            gimli.ReceiveAttack(gandalf.AttackValue);
-            //gandalf.Attack(gimli);
+            //gimli.Attack(gandalf.AttackValue);
+            gandalf.Attack(gimli);
 
             Assert.That(gimli.Health, Is.EqualTo(0));
             //Assert.That(gimli.Health, Is.EqualTo(gimliStartHealth -= gandalf.AttackValue - gimli.DefenseValue));
