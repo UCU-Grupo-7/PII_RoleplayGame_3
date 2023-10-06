@@ -7,6 +7,7 @@ namespace Program
     {
         static void Main(string[] args)
         {
+            
             SpellsBook book = new SpellsBook();
             book.AddSpell(new Fireball());
             book.AddSpell(new Thunder());
@@ -18,21 +19,29 @@ namespace Program
 
             Archer legolas = new Archer("Legolas");
 
-            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
-            Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
+            Console.WriteLine($"Gimli has ❤️ {gimli.Health} Gimli has defense: {gimli.DefenseValue}. Gimli PV points: {gimli.VP}");
 
-            //gimli.ReceiveAttack(gandalf.AttackValue);
-            legolas.Attack(gandalf);
+            gandalf.Attack(gimli);
+            gandalf.Attack(gandalf);
 
-            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+/*             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Legolas has ❤️ {legolas.Health}");
-            Console.WriteLine($"gandalf has ❤️ {gandalf.Health}");
+            Console.WriteLine($"gandalf has ❤️ {gandalf.Health}"); */
 
+            Console.WriteLine($"Legolas has ❤️ {legolas.Health}");
+            
             gimli.Cure();
             legolas.Cure();
 
-            Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
-            Console.WriteLine($"Someone cured Legolas. Legolas now has ❤️ {legolas.Health}");
+            Foe goblin = new Goblin();
+
+            gandalf.Attack(goblin);
+
+            gandalf.Attack(goblin);
+
+            gandalf.Attack(goblin);
+
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.VP} victory points");
         }
     }
 }

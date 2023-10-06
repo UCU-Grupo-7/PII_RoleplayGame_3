@@ -1,26 +1,21 @@
+using System;
 using System.Collections.Generic;
 
 namespace RoleplayGame
 {
+    //ejemplo documentacion diseño de clase base y derivada
+    //https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/tutorials/inheritance
     public abstract class Character : ICharacter 
     {
+        public int VP { get; set;}
         private int health = 100;
-        //private int baseHealth = 100;
-
-        private List<IItem> items = new List<IItem>();
-
-        /* public Archer(string name)
-        {
-            this.Name = name;
-            
-            this.AddItem(new Bow());
-            this.AddItem(new Helmet());
-        } */
+        protected List<IItem> items = new List<IItem>();
 
         public string Name { get; set; }
         
         public int AttackValue
         {
+            //get item values
             get
             {
                 int value = 0;
@@ -68,13 +63,23 @@ namespace RoleplayGame
         {
             if (character.DefenseValue < this.AttackValue)
             {
+                Console.WriteLine($"{this.Name} attacks {character.Name} with 🗡️  {this.AttackValue}");
                 character.Health -= this.AttackValue - character.DefenseValue;
+                if (character.Health == 0)
+                {
+                    Console.WriteLine($"{this.Name} defeated 💀 {character.Name}");
+                }
+                else
+                {
+                    Console.WriteLine($"{character.Name} now has ❤️ {character.Health}");
+                }
             }
         } 
 
         public void Cure()
         {
-            this.Health = 100;
+            this.Health += 100;
+            Console.WriteLine($"Someone cured {this.Name} 💗 and now has ❤️ {this.Health}");
         }
 
         public void AddItem(IItem item)
