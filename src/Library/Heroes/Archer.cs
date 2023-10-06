@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer : Heroe
+    public class Archer : Hero
     {
-        //private int baseHealth = 150;
-        private int health = 150;
         public Archer(string name)
         {
-            this.Name = name; 
+            this.Name = name;
+            this.Health = 1232345; 
             
-            //this.Health = baseHealth;
-
             this.AddItem(new Bow());
             this.AddItem(new Helmet());
         }
