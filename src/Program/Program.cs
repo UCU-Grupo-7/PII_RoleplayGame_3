@@ -35,13 +35,20 @@ namespace Program
 
             Foe goblin = new Goblin();
 
-            gandalf.Attack(goblin);
+            /* gandalf.Attack(goblin);
 
             gandalf.Attack(goblin);
 
             gandalf.Attack(goblin);
 
             Console.WriteLine($"Gandalf has ❤️ {gandalf.VP} victory points");
+             */
+             Foe golem = new Golem();
+             goblin.Attack(golem);
+             golem.Attack(goblin);
+
+             Console.WriteLine(goblin.Health);
+             Console.WriteLine(gandalf is Hero);
         }
     }
 }

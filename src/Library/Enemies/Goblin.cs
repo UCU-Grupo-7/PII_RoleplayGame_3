@@ -6,12 +6,32 @@ namespace RoleplayGame
         {
             this.Name = "Goblin";
             this.Health = 200;
-            this.AttackValue = 75;
-            this.DefenseValue = 50;
             this.VP = 30;
 
-            this.AddItem(new Sword());
-            this.AddItem(new Shield());
+            this.AddItem(new GoblinAxe());
+            this.AddItem(new GoblinShield());
+        }
+    }
+
+    public class GoblinAxe : IAttackItem
+    {
+        public int AttackValue 
+        {
+            get
+            {
+                return 55;
+            } 
+        }
+    }
+
+    public class GoblinShield : IDefenseItem
+    {
+        public int DefenseValue 
+        {
+            get
+            {
+                return 55;
+            } 
         }
     }
 }
