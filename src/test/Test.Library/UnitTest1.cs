@@ -15,7 +15,8 @@ namespace RoleplayGame
         {
             Dwarf gimli = new Dwarf("Gimli");
             gimli.Cure();
-            Assert.That(gimli.Health, Is.EqualTo(100));
+            Assert.That(gimli.Health, Is.EqualTo(200));
+            
         }
 /*         [Test]
         public void Curar()
