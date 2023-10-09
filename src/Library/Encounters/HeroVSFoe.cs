@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace RoleplayGame
 {
@@ -7,81 +9,74 @@ namespace RoleplayGame
     {
         public List<Hero> heroes = new List<Hero>(); // era protected, lo tuvimos que cambiar para los tests
         public List<Foe> foes = new List<Foe>(); // aca tambien
-        public HeroVSFoe(/* List<Hero> heroes , List<Foe> foes */){
-            /* this.heroes = heroes;
-            this.foes = foes; */
-            
+        public HeroVSFoe(){            
 
         }
 
-        public void DoEncounter(){
-            while (heroes.Count!= 0 || foes.Count!=0)
+        public void DoEncounter()
+        {
+            int loop = 0;
+            while (loop == 0)
             {
                 FoesAttack();
                 if (heroes.Count == 0)
                 {
                     Console.WriteLine("Foes Wins!");
+                    loop++;
                     break;
                 }
-                HeroesAttack();    
+                HeroesAttack();
                 if (foes.Count == 0)
                 {
+                    loop++;
                     Console.WriteLine("Heroes Wins!");
                     foreach (Hero hero in heroes)
                     {
                         hero.Cure();
                     }
                     break;
-                }
+                }  
             }
-            
-
-
-
+            Console.WriteLine("The encounter has ended");
         }
         public void FoesAttack()
         {
-            //if (foes.Count>heroes.Count){
-                int j = 0;
-                for (int i = 0; i < foes.Count; i++)
+            /// <summary>
+            /// Cada Foe ataca unicamente un heroe. Si hay un sólo héroe, todos los enemigos atacan al mismo. Si hay más de un enemigo y más de un héroe, el primer enemigo ataca al primer héroe, el segundo enemigo ataca al segundo héroe, y así sucesivamente.
+            /// Se eliminan los heroes una vez vencidos
+            /// </summary>
+            int j = 0;
+            for (int i = 0; i < foes.Count; i++)
+            {
+                if(heroes[j].Health != 0)
                 {
-                    /* if(heroes[j].Health == 0){ //si se muere el heroe, el enemigo no pierde el turno y ataca al siguiente heroe
-                        i--;
-                        j++;
-                        if (j >= heroes.Count)
-                        {
-                        j=0;
-                        }
-                        continue;
-                    } */
                     foes[i].Attack(heroes[j]);
                     j++;
-                    if (j >= heroes.Count){
-                        j=0;
-                    }
+                    if (j >= heroes.Count) { j=0; }
+                    continue;
                 }
-                for (int i = 0; i < heroes.Count; i++)
+                else
                 {
-                    if (heroes[i].Health == 0)
-                    {
-                        RemoveCharacter(heroes[i]);
-                        //i--;
-                    }
+                    i--;
+                    j++;
+                    if (j >= heroes.Count) { j=0; }
+                    continue;
                 }
-            //}
-/*             else
+            }
+            for (int i = 0; i < heroes.Count; i++)
             {
-                for (int i = 0; i < foes.Count; i++)  // aca corta en el ultimo enemigo
-                    {
-                        if (heroes[i].Health == 0){
-                            i--;
-                            continue;
-                        }
-                        foes[i].Attack(heroes[i]);
-                    }
-            } */
+                if (heroes[i].Health == 0)
+                {
+                    RemoveCharacter(heroes[i]);
+                    i--;
+                }
+            }
 
         }
+        /// <summary>
+        /// Todos los héroes atacan a cada uno de los enemigos 1 vez.
+        /// Se eliminan los enemigos una vez vencidos y se suman los puntos de victoria correspondientes
+        /// </summary>
         public void HeroesAttack()
         {
             foreach (Hero hero in heroes)
@@ -94,7 +89,9 @@ namespace RoleplayGame
                     }
                     if (foes[i].Health == 0)
                     {
+                        hero.checkForVP(foes[i]);
                         RemoveCharacter(foes[i]);
+                        i--;
                     }
                 }
             }
