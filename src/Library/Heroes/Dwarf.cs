@@ -9,6 +9,7 @@ namespace RoleplayGame
             this.VP = 10;
 
             this.AddItem(new Axe());
+            this.AddItem(new Axe());
             this.AddItem(new Helmet());
         }
     }
