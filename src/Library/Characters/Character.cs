@@ -74,6 +74,10 @@ namespace RoleplayGame
                     Console.WriteLine($"{character.Name} now has ❤️ {character.Health}");
                 }
             }
+            else
+            {
+                Console.WriteLine($"{character.Name} blocks 🛡️  {this.Name} attack!");
+            }
         } 
 
         public void Cure()

@@ -36,7 +36,7 @@ namespace Program
 
             Foe goblin = new Goblin();
 
-            gandalf.Attack(goblin);
+            /* gandalf.Attack(goblin);
 
             gandalf.Attack(goblin);
 

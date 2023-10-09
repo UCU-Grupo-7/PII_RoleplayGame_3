@@ -5,8 +5,8 @@ namespace RoleplayGame
 {
     public class HeroVSFoe : IEncounter
     {
-        protected List<Hero> heroes = new List<Hero>();
-        protected List<Foe> foes = new List<Foe>();
+        public List<Hero> heroes = new List<Hero>(); // era protected, lo tuvimos que cambiar para los tests
+        public List<Foe> foes = new List<Foe>(); // aca tambien
         public HeroVSFoe(/* List<Hero> heroes , List<Foe> foes */){
             /* this.heroes = heroes;
             this.foes = foes; */
@@ -18,12 +18,12 @@ namespace RoleplayGame
             while (heroes.Count!= 0 || foes.Count!=0)
             {
                 FoesAttack();
-                HeroesAttack();    
                 if (heroes.Count == 0)
                 {
                     Console.WriteLine("Foes Wins!");
                     break;
                 }
+                HeroesAttack();    
                 if (foes.Count == 0)
                 {
                     Console.WriteLine("Heroes Wins!");
@@ -45,7 +45,7 @@ namespace RoleplayGame
                 int j = 0;
                 for (int i = 0; i < foes.Count; i++)
                 {
-                    if(heroes[j].Health == 0){ //si se muere el heroe, el enemigo no pierde el turno y ataca al siguiente heroe
+                    /* if(heroes[j].Health == 0){ //si se muere el heroe, el enemigo no pierde el turno y ataca al siguiente heroe
                         i--;
                         j++;
                         if (j >= heroes.Count)
@@ -53,7 +53,7 @@ namespace RoleplayGame
                         j=0;
                         }
                         continue;
-                    }
+                    } */
                     foes[i].Attack(heroes[j]);
                     j++;
                     if (j >= heroes.Count){
@@ -65,6 +65,7 @@ namespace RoleplayGame
                     if (heroes[i].Health == 0)
                     {
                         RemoveCharacter(heroes[i]);
+                        //i--;
                     }
                 }
             //}
